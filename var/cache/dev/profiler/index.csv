@@ -66,3 +66,10 @@ a5df1c,127.0.0.1,GET,http://127.0.0.1:8000/,1488238072,,200
 fc2ac7,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.woff?v=4.2.0,1488238073,,404
 9be5b5,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.ttf?v=4.2.0,1488238074,d5611f,200
 d5611f,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.ttf?v=4.2.0,1488238074,,404
+d9b452,127.0.0.1,GET,http://127.0.0.1:8000/,1488238615,,200
+bf1dde,127.0.0.1,GET,http://127.0.0.1:8000/images/parallax/contact-bg.jpg,1488238618,9c0992,200
+9c0992,127.0.0.1,GET,http://127.0.0.1:8000/images/parallax/contact-bg.jpg,1488238618,,404
+787dcc,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.woff?v=4.2.0,1488238618,d2e96b,200
+d2e96b,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.woff?v=4.2.0,1488238618,,404
+36232b,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.ttf?v=4.2.0,1488238619,fa2e65,200
+fa2e65,127.0.0.1,GET,http://127.0.0.1:8000/fonts/fontawesome-webfont.ttf?v=4.2.0,1488238619,,404
