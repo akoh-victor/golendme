@@ -1,0 +1,110 @@
+{% extends 'base2.html.twig' %}
+
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    {% if activeDonation %}
+        <li>
+            <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+        </li>
+    {% endif %}
+    {% if activeReservation %}
+        <li>
+            <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+        </li>
+    {% endif %}
+    {% if recycle %}
+        <li>
+            <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+
+{% block fos_user_content %}
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('home') }}">Paid</a></li>
+
+        </ol>
+
+
+    {% block content %}
+
+            <div class="row">
+                <div class="col-sm-8 col-md-offset-2" >
+                    <!-- /.panel-heading -->
+                <div class="panel-body">
+                    {% if confirmation %}
+                        <div class="alert alert-success">
+                            <i class="fa fa-check-circle fa-fw" style="font-size:40px;"></i> Congratulations on Your Payment is Confirmed,
+                        </div>
+                             {% else %}
+                        <div class="alert alert-warning">
+                            <i class="fa fa-check-circle fa-fw" style="font-size:40px;"></i> Congratulations on Your Payment !!!,
+                        </div>
+                    {% endif %}
+                </div>
+                    <!-- .panel-body -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 col-md-offset-2" >
+
+                    <div class="login-panel panel panel-default">
+
+                        <div style="text-align:center;  padding: 50px;">
+
+                 {% if donation  %}
+                       {% for donation in donation %}
+                           {% if confirmation %}
+
+                            <h3>Please Wait Patiently for your Reward   </h3>
+                            <ul>
+                                <li>
+                                    While you are waiting kindly tell Other about the <strong>BankAlert</strong>
+                                    so that you stand the chance of tippling your money
+                                </li>
+                                <li>
+                                    <a  href="{{ path('dashboard') }}">Go Home</a>
+                                </li>
+
+                            </ul>
+
+
+                           {% else %}
+                               <h3>Please Wait Patiently for your payment to be confirmed   </h3>
+                               <ul>
+                                   <li>While you are waiting kindly call the receiver to
+                                       confirm you so that
+                                       you can be place on the cue
+                                       for receiving.
+                                   </li>
+                                   <li><h2><strong>Receivers Details </strong></h2></li>
+                                   <li>Name   :  {{ donation.participant.firstName }}</li>
+                                   <li>Phone  :  {{ donation.participant.phone }}</li>
+                                   <li>E-mail :  {{ donation.participant.email }}</li>
+                               </ul>
+
+                           {% endif %}
+
+
+
+
+
+
+                       {%  endfor %}
+
+        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    {% endblock %}
+
+{% endblock %}

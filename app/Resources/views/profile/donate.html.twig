@@ -1,0 +1,152 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block navItems %}
+    <li xmlns="http://www.w3.org/1999/html">
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    {% if activeDonation %}
+        <li>
+            <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+        </li>
+    {% endif %}
+    {% if activeReservation %}
+        <li>
+            <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+        </li>
+    {% endif %}
+    {% if recycle %}
+        <li>
+            <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="page-scroll" href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+{% block content %}
+
+        <ol class="breadcrumb">
+            <li><strong>You are here:</strong></li>
+            <li>Dashboard</li>
+            <li><strong>Donate</strong></li>
+        </ol>
+
+
+<div class="container">
+
+        <div class="col-md-7 col-sm-11 col-xs-11">
+                {% if donation  %}
+                        {% for donation in donation %}
+                                <div class="panel panel-primary">
+                                <h2 class="panel panel-heading">Make Payment To {{ donation.participant.firstName }}</h2>
+                                <div class="panel panel-body">
+
+                                        <table class="table  table-hover">
+                                            <tbody>
+                                            <h3 style="color: red">Please Only use the bank detail provided below</h3>
+
+                                            <tr><td>Amount</td><td style="color: darkred">{{ donation.package.value |price }}</td></tr>
+                                            <tr><td>Amount</td><td>{{ donation.participant.bank }}</td></tr>
+                                            <tr><td>Account Name</td><td>{{ donation.participant.accountName  |capitalize}}</td></tr>
+                                            <tr><td>Account Number</td><td>{{ donation.participant.accountNumber }}</td></tr>
+
+                                            </tbody>
+                                        </table>
+
+                                 </div>
+                                    <div class="panel-footer">
+                                        <a style="margin-left: 10em"  href="{{ path('payment-made', { 'reservationId': reservation }) }}"
+                                           class="btn btn-lg btn-outline btn-success " >
+                                           I HAVE MADE PAYMENT</a>
+                                    </div>
+                                </div>
+                        {%  endfor %}
+                            <div class="panel panel-primary">
+                                <h2 class="panel panel-heading">No Donation Yet</h2>
+                                <div class="panel panel-body">
+
+                                  <div class="alert-info">
+
+                                      <p>Currently there is no donation on this package kindly<br /> <a href="{{ path('recycle') }}">Choose another Package</a> </p>
+                                  </div>
+
+                                </div>
+                                <div class="panel-footer">
+                                    <a style="margin-left: 10em"  href="{{ path('recycle') }}"
+                                       class="btn btn-lg btn-outline btn-success " >
+                                        Choose A Package</a>
+                                </div>
+                            </div>
+                    {% else %}
+
+
+
+
+
+
+
+                {% endif %}
+
+
+        </div>
+        <div class="col-sm-5 col-sm-12 col-xs-12">
+            <div class="x_panel">
+
+
+
+                    <div class="x_title">
+                        <h2>Instructions</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="alert alert-info">
+                        <ul class="list-unstyled top_profiles scroll-view">
+
+
+                            <article class="media event">
+
+                                <div class="media-body">
+                                    <a class="title" href="#">Step one </a>
+                                    <p>Call the Participant you are to Pay </p>
+
+                                </div>
+                            </article>
+                             <article class="media event">
+                                <div class="media-body">
+                                    <a class="title" href="#">Step two</a>
+                                    <p>Make the Payment</p>
+                                </div>
+                               </article>
+                                <article class="media event">
+                                    <div class="media-body">
+                                        <a class="title" href="#">Step three</a>
+                                        <p>Click "I HAVE MADE PAYMENT" button</p>
+                                    </div>
+                                </article>
+                                <article class="media event">
+                                <div class="media-body">
+                                    <a class="title" href="#">Final step</a>
+                                    <p>Call the receiver to confirm you  </p>
+                                </div>
+
+
+                                </article>
+                                <article class="media event">
+                                    <div class="media-body">
+                                        <a class="title" href="#">Conflict Resolution</a>
+                                        <p>Please Raise a ticket for quick resolution of Conflict  </p>
+                                    </div>
+                                </article>
+
+
+                        </ul>
+                    </div>
+
+            </div>
+        </div>
+
+</div>
+{% endblock %}

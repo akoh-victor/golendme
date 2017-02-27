@@ -1,0 +1,134 @@
+{% extends 'base2.html.twig' %}
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    {% if activeDonation %}
+        <li>
+            <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+        </li>
+    {% endif %}
+    {% if activeReservation %}
+        <li>
+            <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+        </li>
+    {% endif %}
+    {% if recycle %}
+        <li>
+            <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+ {% block content %}
+     <!-- page content -->
+
+
+     <ol class="breadcrumb">
+         <li><strong>You are here:</strong></li>
+         <li>Dashboard</li>
+         <li><strong>Receive</strong></li>
+
+     </ol>
+           {% if activeDonation %}
+
+                     <div class="row">
+                         <div class="col-sm-10 col-md-offset-1" >
+                             {% if donation.reservation %}
+                                 {% for reservation in donation.reservation %}
+                                     {% if not reservation.delet == 1 %}
+                                            <div class="alert alert-warning  col-sm-6">
+                                     <div class="panel panel-default">
+                                         <h2 class="panel-heading">Payer's Information</h2>
+                                           <div class="panel-body">
+                                               <div class="alert alert-danger">  <h3><strong>Amount: {{ reservation.donation.value |price }}</strong></h3></div>
+                                               <h3><strong>Payer: {{ reservation.payer.firstName |capitalize }} {{ reservation.payer.lastName |capitalize }}</strong></h3>
+                                               <h3><strong>Phone: {{ reservation.payer.phone  }} </strong></h3>
+                                               <h3><strong>Email: {{ reservation.payer.email  }}</strong></h3>
+                                           </div>
+                                         <div class="panel-footer">
+                                             <div class="row">
+
+
+                                             {% if reservation.pay == 1 %}
+
+
+                                                 {% if reservation.status == 'paid' %}
+                                                                 <a style="margin-left: 1em"  href="{{ path('confirmed-dashboard',
+                                                                 {'reservationId': reservation.id }) }}"
+                                                                  class="btn btn-lg btn-outline btn-success disabled " >
+                                                                  CONFIRM PAYMENT</a>
+                                                                 <a style="margin-left: 1em;margin-right: 1em"  href="{{ path('purge-dashboard',
+                                                                 {'reservationId': reservation.id }) }}"
+                                                                    class="btn btn-lg btn-outline btn-danger disabled" >
+                                                                     PURGE USER</a>
+
+                                                 {% else %}
+                                                             <a style="margin-left: 1em"  href="{{ path('confirmed-dashboard',
+                                                                  {'reservationId': reservation.id }) }}"
+                                                                class="btn btn-lg btn-outline btn-success " >
+                                                                 CONFIRM PAYMENT</a>
+
+                                                                      <a style="margin-left: 1em;margin-right: 1em"  href="{{ path('purge-dashboard',
+                                                                      {'reservationId': reservation.id }) }}"
+                                                                         class="btn btn-lg btn-outline btn-danger disabled" >
+                                                                          PURGE USER</a>
+
+                                                     {% endif %}
+                                                    {% else %}
+
+                                                         <a style="margin-left: 1em"  href=""
+                                                            class="btn btn-lg btn-outline btn-success disabled" >
+                                                             CONFIRM PAYMENT</a>
+
+                                                        <a style="margin-left: 1em;margin-right: 1em"  href="{{ path('purge-dashboard',
+                                                        {'reservationId': reservation.id }) }}"
+                                                           class="btn btn-lg btn-outline btn-danger" >
+                                                            PURGE USER</a>
+                                                 {% endif %}
+
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                     {% endif %}
+                                 {% endfor %}
+
+
+
+                                 <hr />
+
+                                 <div class="alert alert-warning  col-sm-12">
+                                     <div class="panel panel-default">
+                                         <h2 class="panel-heading">No Donor yet ?</h2>
+                                         <div class="panel-body">
+                                             <p><strong>Kindly Wait for your turn. ... </strong></p><br />
+                                             <h3 class="panel-heading">Purged All the Donors? </h3>
+                                             <p><strong>Kindly Wait to get paired again ... </strong></p><br />
+                                         </div>
+                                         <div class="panel-footer">
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             {% else %}
+                                 <div class="alert alert-warning  col-sm-12">
+                                     <div class="panel panel-default">
+                                         <h2 class="panel-heading">Waiting...</h2>
+                                         <div class="panel-body">
+                                             <p><strong>Kindly Wait for your turn.  </strong></p><br />
+                                         </div>
+                                         <div class="panel-footer">
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             {% endif %}
+                         </div>
+                     </div>
+
+           {% endif %}
+
+ {% endblock %}

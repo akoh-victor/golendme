@@ -1,0 +1,84 @@
+{% extends 'base2.html.twig' %}
+
+
+ {% block navItems %}
+     <li>
+         <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+     </li>
+     {% if activeDonation %}
+     <li>
+         <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+     </li>
+     {% endif %}
+     {% if activeReservation %}
+         <li>
+             <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+         </li>
+    {% endif %}
+     {% if recycle %}
+         <li>
+             <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+         </li>
+     {% endif %}
+     <li>
+         <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+     </li>
+ {% endblock %}
+ {% block content %}
+     <!-- page content -->
+
+
+
+     <ol class="breadcrumb">
+         <li><strong>You are here:</strong></li>
+         <li><strong>Dashboard</strong></li>
+     </ol>
+
+             {% block pageContent %}
+
+
+                     <div class="row">
+                         <div class="col-sm-8 col-md-offset-2" >
+                             <!-- /.panel-heading -->
+                             <h1 class="alert alert-info">
+                                 Information
+                             </h1>
+                             <div class="alert alert-warning">  <p>Welcome to GOLENDME, Our number one aim is to guarantee your satisfaction !!!<br />
+                                     Please follow all the rules so that we can serve you better </p>
+                             </div>
+
+
+                             <div class="panel panel-info">
+                                 <h2 class="panel panel-heading"><strong>Guide</strong></h2>
+
+                                 <ul class="panel panel-body">
+                                     <li>To Redonate "GO TO RECYCLE" and "CHOOSE A PACKAGE" of your choice</li>
+                                     <li>"CALL" the participant you are to pay to </li>
+                                     <li>"MAKE PAYMENT" and consent it </li>
+                                     <li>"CALL the RECEIVER" for quick confirmation</li>
+                                     <li>WAIT To get paid ...</li>
+                                     <li>For any issue RAISE A TICKET and it will be attended to as soon as possible</li>
+                                 </ul>
+                             </div>
+                             <div class="panel panel-danger">
+                                 <h2 class="panel panel-heading"><strong>Rules</strong></h2>
+                                 <div class="panel panel-body">
+                                     <ul style="color: red">
+                                         <li>You must make Payment when asked to </li>
+                                         <li>You must consent that you have made payment by using the "I HAVE MADE PAYMENT BUTTON"</li>
+                                         <li>You must make sure you receive payment before confirmation</li>
+                                         <li>You must CONFIRM payment on reception of payment </li>
+                                         <li>If you get PURGED 3 times your account will be deleted pamanently </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                             <!-- .panel-body -->
+                         </div>
+                     </div>
+
+
+
+             {% endblock %}
+
+
+ {% endblock %}

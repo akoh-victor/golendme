@@ -1,0 +1,161 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="replies")
+ * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
+ */
+
+class Reply
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="text",nullable=false)
+     */
+    protected $description;
+
+
+    /**
+     * @ORM\Column(type="smallint")
+     *
+     */
+    protected $read;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Support", inversedBy="reply")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    protected $support;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ticket", inversedBy="reply")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    protected $ticket;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Reply
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set read
+     *
+     * @param integer $read
+     *
+     * @return Reply
+     */
+    public function setRead($read)
+    {
+        $this->read = $read;
+
+        return $this;
+    }
+
+    /**
+     * Get read
+     *
+     * @return integer
+     */
+    public function getRead()
+    {
+        return $this->read;
+    }
+
+    /**
+     * Set support
+     *
+     * @param \AppBundle\Entity\Support $support
+     *
+     * @return Reply
+     */
+    public function setSupport(\AppBundle\Entity\Support $support = null)
+    {
+        $this->support = $support;
+
+        return $this;
+    }
+
+    /**
+     * Get support
+     *
+     * @return \AppBundle\Entity\Support
+     */
+    public function getSupport()
+    {
+        return $this->support;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \AppBundle\Entity\Ticket $ticket
+     *
+     * @return Reply
+     */
+    public function setTicket(\AppBundle\Entity\Ticket $ticket = null)
+    {
+        $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \AppBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+}

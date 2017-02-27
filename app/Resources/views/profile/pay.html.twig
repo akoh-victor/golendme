@@ -1,0 +1,70 @@
+{% extends 'base2.html.twig' %}
+
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    {% if activeDonation %}
+        <li>
+            <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+        </li>
+    {% endif %}
+    {% if activeReservation %}
+        <li>
+            <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+        </li>
+    {% endif %}
+    {% if recycle %}
+        <li>
+            <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+        <ol class="breadcrumb">
+            <li><strong>You are here:</strong></li>
+            <li>Reserve</li>
+            <li><strong>Upload Payment</strong></li>
+
+        </ol>
+
+
+
+        <div class="col-md-6 col-sm-6 col-xs-12 col-sm-offset-3">
+
+
+            <div class="panel panel-primary">
+            <h2 class="panel panel-heading">Fill In The Payment details</h2>
+            <div class="panel panel-body">
+
+
+                {{ form_start(form) }}
+
+
+                {{ form_label(form.payer) }}
+                {{ form_errors(form.payer) }}
+                {{ form_widget(form.payer) }}
+                {{ form_label(form.modeofPayment) }}
+                {{ form_errors(form.modeofPayment) }}
+                {{ form_widget(form.modeofPayment) }}
+                {{ form_label(form.amount) }}
+                {{ form_errors(form.amount) }}
+                {{ form_widget(form.amount) }}
+
+
+             </div>
+                <div class="panel-footer">
+                    {{ form_widget(form.save) }}
+                </div>  {{ form_end(form) }}
+        </div>
+
+        </div>
+
+
+
+{% endblock %}

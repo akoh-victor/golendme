@@ -1,0 +1,93 @@
+{% extends 'base2.html.twig' %}
+
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+
+    <li>
+        <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+{% block content %}
+
+
+
+            <div class="col-lg-6 col-sm-offset-3 panel panel-body panel-primary">
+                  <h1 class=" alert panel-heading">Create a New Ticket</h1>
+                <div class="row panel-body">
+                        {{ form_start(form) }}
+
+                            <div class="col-md-10 col-sm-offset-1">
+                                <div class="form-group">
+                                    {{ form_label(form.title) }}
+                                    {{ form_errors(form.title) }}
+                                    {{ form_widget(form.title) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.phone) }}
+                                    {{ form_errors(form.phone) }}
+                                    {{ form_widget(form.phone) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.email) }}
+                                    {{ form_errors(form.email) }}
+                                    {{ form_widget(form.email) }}
+                                </div>
+
+
+                                <div class="form-group">
+                                    {{ form_label(form.description) }}
+                                    {{ form_errors(form.description) }}
+                                    {{ form_widget(form.description) }}
+                                </div>
+                            </div>
+
+                        {{ form_end(form) }}
+                </div>
+            </div>
+
+    <div class="row">
+        <hr />
+
+        {% if tickets %}
+
+                    <table class="table table-responsive">
+
+                                    <thead>
+                                               <td>Ticket Id</td> <td>Title</td><td>Description</td> <td>Status</td>
+                                    </thead>
+                                   {% for ticket in tickets %}
+                                       <tr>
+                                       <td>{{ ticket.id }}</td> <td>{{ ticket.title |title }}</td><td>{{ ticket.description |title }}</td> <td>{{ ticket.status }}</td>
+                                            {% if ticket.replied == 1 %}
+                                                <tr>
+                                                <td colspan="1">From</td> <td colspan="3">Message</td>
+                                                {% for reply in ticket.reply %}
+                                                     <td colspan="1">Suppot Team</td> <td colspan="3">{{ reply.description }}</td>
+                                                 {% endfor %}
+                                                </tr>
+                                            {% endif %}
+
+                                       </tr>
+
+
+                                   {% endfor %}
+                    </table>
+
+        {% endif %}
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

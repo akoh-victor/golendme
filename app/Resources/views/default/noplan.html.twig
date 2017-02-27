@@ -1,0 +1,24 @@
+{% extends 'base2.html.twig' %}
+
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+{% block content %}
+<div class="panel panel-primary">
+
+    <h1> No Plan Available Now .</h1>
+
+<div class="alert alert-warning">Congratulations you are seeing this page because there is no donation to pay <br />
+    now for this plan kindly choose another <a class="page-scroll" href="{{ path('recycle') }}">Package</a> from here  <br /> or check back later.
+
+</div>
+</div>
+{% endblock %}

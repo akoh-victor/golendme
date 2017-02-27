@@ -1,0 +1,13 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block notification %}{% endblock %}
+{% block pageTitle %}{% block pageName %}<h2>Register New Landlord</h2>{% endblock %}{% endblock %}
+
+    {% block pageContent %}
+        <div class="jumbotron -align-justify">
+            {% include "FOSUserBundle:Registration:register_participant_content.html.twig" %}
+        </div>
+    {% endblock %}
+
+

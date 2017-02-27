@@ -1,0 +1,169 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block navItems %}
+    <li>
+        <a href= "{{ path('dashboard') }}"><i class="" aria-hidden="true"></i>Dashboard</a>
+    </li>
+    {% if activeDonation %}
+        <li>
+            <a class="page-scroll" href="{{ path('receive-dashboard') }}">Reciever</a>
+        </li>
+    {% endif %}
+    {% if activeReservation %}
+        <li>
+            <a class="page-scroll" href="{{ path('donate-dashboard') }}">Donate</a>
+        </li>
+    {% endif %}
+    {% if recycle %}
+        <li>
+            <a class="page-scroll" href="{{ path('recycle') }}">Recycle</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="page-scroll"  href="{{ path('raise-ticket') }}">Support</a>
+    </li>
+{% endblock %}
+ {% block content %}
+     <!-- page content -->
+
+
+     <ol class="breadcrumb">
+         <li><strong>You are here:</strong></li>
+         <li><strong>Recycle</strong></li>
+     </ol>
+
+         <!-- Start Pricing Table Section -->
+                 <div id="pricing" class="pricing-sechtion">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="col-md-12">
+                                     <div class="panel  panel-default panel-heading pull-right">
+                                         <h3>Available Plan</h3>
+                                         <p style="color: black">Please Choose a Package of your Choice</p>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="row">
+
+                             <div style="background-color: #26b99a" class="panel panel-body">
+
+                                 <div class="col-md-3">
+                                     <div class="pricing-table">
+                                         <div class="plan-name">
+                                             <h3>Basic</h3>
+                                         </div>
+                                         <div class="plan-price">
+                                             <div class="price-value">N20,000</div>
+                                             <div class="interval">withen 1hr to 168hrs</div>
+                                         </div>
+                                         <div class="plan-list">
+                                             <ul>
+                                                 <li> REWARD <div class="plan-price"><div style="color: green"  class="price-value">N40,000</div></div></li>
+
+                                                 <li style="color: red;">Donate 3 Times For For Basic Package to get<div class="plan-price"><div style="color: red;" class="price-value">N60,000</div></div></li>
+                                                 <li>On your next donation</li>
+                                             </ul>
+                                         </div>
+                                         <div class="plan-signup">
+                                             <a href= "{{ path('recycle-dashboard',{'packageId':1}) }}" class="btn-system btn-small">Suscribe Now</a>
+
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="col-md-3">
+                                     <div class="pricing-table">
+                                         <div class="plan-name">
+                                             <h3>Standard</h3>
+                                         </div>
+                                         <div class="plan-price">
+                                             <div class="price-value">N50,000</div>
+                                             <div class="interval">withen 1hr to 168hrs</div>
+                                         </div>
+                                         <div class="plan-list">
+                                             <ul>
+                                                 <li> REWARD <div class="plan-price"><div style="color: green"  class="price-value">N100,000</div></div></li>
+
+                                                 <li style="color: red;">Donate 3 Times For  For Standard Package to get<div class="plan-price"><div style="color: red;" class="price-value">N150,000</div></div></li>
+                                                 <li>On your next donation</li>
+                                             </ul>
+                                         </div>
+                                         <div class="plan-signup">
+                                             <a href="{{ path('recycle-dashboard',{'packageId':2})}}" class="btn-system btn-small">Suscribe Now</a>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                     <div class="pricing-table">
+                                         <div class="plan-name">
+                                             <h3>Premium</h3>
+                                         </div>
+                                         <div class="plan-price">
+                                             <div class="price-value">N100,000</div>
+                                             <div class="interval">withen 1hr to 168hrs</div>
+                                         </div>
+                                         <div class="plan-list">
+                                             <ul>
+                                                 <li> REWARD <div class="plan-price"><div style="color: green"  class="price-value">N200,000</div></div></li>
+
+                                                 <li style="color: red;">Donate 3 Times For   For Standard Package to get
+                                                     <div class="plan-price"><div style="color: red;" class="price-value">N300,000</div></div></li>
+                                                 <li>On your next donation</li>
+                                             </ul>
+                                         </div>
+                                         <div class="plan-signup">
+                                             <a href="{{ path('recycle-dashboard',{'packageId':3})}}" class="btn-system btn-small">Suscribe Now</a>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="col-md-3">
+                                     <div class="pricing-table">
+                                         <div class="plan-name">
+                                             <h3>Silver</h3>
+                                         </div>
+                                         <div class="plan-price">
+                                             <div class="price-value">N200,000</div>
+                                             <div class="interval">withen 1hr to 168hrs</div>
+                                         </div>
+                                         <div class="plan-list">
+                                             <ul>
+                                                 <li> REWARD <div class="plan-price"><div style="color: green"  class="price-value">N400,000</div></div></li>
+
+                                                 <li style="color: red;">Donate 3 Times For Standard Package to get
+                                                     <div class="plan-price"><div style="color: red;" class="price-value">N600,000</div></div></li>
+                                                 <li>On your next donation</li>
+                                             </ul>
+                                         </div>
+                                         <a href="{{ path('participant-registration')}}" class="btn-system btn-small">
+                                         <div class="plan-signup">
+                                             <a href="{{ path('recycle-dashboard',{'packageId':4})}}" class="btn-system btn-small">Suscribe Now</a>
+                                         </div></a>
+                                     </div>
+                                 </div>
+
+                             </div>
+
+
+                         </div>
+                     </div>
+                 </div>
+                 <!-- End Pricing Table Section -->
+                                 <div class="col-sm-4 col-sm-offset-4">
+                                     <h1 class="alert alert-info">
+                                         Tip
+                                     </h1>
+                                     <div class="alert alert-info">  <p>PlEASE REACH SUPPORT IF YOU NEED HELP </p><br />
+                                         This is how you can do that
+                                         <ul>
+                                             <li>1 RAISE A TICKET By goin to SUPPORT on the menu</li>
+                                             <li>2 Email Support  "Support@golendme.org"</li>
+                                         </ul>
+                                     </div>
+                                 </div>
+
+ {% endblock %}

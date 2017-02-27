@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Profile{% endblock %}</title>
+
+
+
+    {% block stylesheets %}
+        {% stylesheets  filter='scssphp' output="css/app.css"
+
+        "assets/css/bootstrap.min.css"
+        "assets/css/font-awesome.min.css"
+        "assets/css/animate.css"
+        "assets/css/owl.carousel.css"
+        "assets/css/owl.theme.css"
+        "assets/css/owl.transitions.css"
+        "assets/css/style.css"
+        "assets/css/responsive.css"
+
+        %}
+
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo.png') }}" />
+</head>
+<body class="nav-md">
+<div class="container body">
+    {% block body %}
+
+    {% block fos_user_content %}
+
+
+    {% endblock %}
+
+
+        {% block footer %}
+            <footer>
+                <div class="pull-right">
+                    admin module by <a href=""></a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+
+<!-- scrips  -->
+{% block javascripts %}
+
+    {% javascripts filter="?jsqueeze" output="js/app.js"
+    "assets/js/jquery-2.1.1.min.js"
+    "assets/js/bootstrap.min.js"
+    "assets/js/custom.js"
+    "assets/js/nprogress.js"
+    "assets/js/carousel.js"
+    "https://use.fontawesome.com/9c59445dbc.js"
+    "assets/js/sb-admin-2.js"
+
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+
+{% endblock %}
+
+
+</body>
+
+</html>

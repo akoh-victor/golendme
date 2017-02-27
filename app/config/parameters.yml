@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: bankalert
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_encryption: ssl
+    mailer_host: smtp.gmail.com
+    mailer_auth_mode:  login
+    mailer_user: akoh.chuma@gmail.com
+    mailer_password: Chuma.nimi1
+    secret: ae05106ce2d25da2d07a4e382bf17112a171759b
+
+

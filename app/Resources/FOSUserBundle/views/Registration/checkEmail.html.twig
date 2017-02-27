@@ -1,0 +1,22 @@
+{% extends 'base2.html.twig'%}
+
+
+{% block content %}
+        <ol class="breadcrumb">
+                <li><strong>You are here :</strong></li>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="active"><a href=""><strong>Confirm Email</strong></a></li>
+        </ol>
+
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+        <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+
+{% endblock fos_user_content %}
+
+{% endblock %}
